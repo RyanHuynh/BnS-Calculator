@@ -1,0 +1,83 @@
+{
+	"mappings" : {
+		"recipe" : {
+			"properties" : {
+				"id" : {
+					"type" : "long",
+					"index" : "not_analyzed"
+				},
+				"name" : {
+					"type" : "string"
+				},
+				"icon_url" : {
+					"type" : "string",
+					"index": "not_analyzed"
+				},
+				"duration" : {
+					"type" : "long"
+				},
+				"craftFee" : {
+					"type" : "long"
+				},
+				"quantity" : {
+					"type" : "long"
+				},
+				"category" : {
+					"type" : "string",
+					"index" : "not_analyzed"
+				},
+				"materials" : {
+					"type" : "object",
+					"properties" : {
+						"id" : {
+							"type" : "long",
+							"index" : "not_analyzed"
+						},
+						"name" : {
+							"type" : "string"
+						},
+						"quantity" : {
+							"type" : "long"
+						},
+						"icon_url" : {
+							"type" : "string",
+							"index" : "not_analyzed"
+						}
+					}
+				},
+				"description" : {
+					"type" : "string"
+				}
+			}
+		},
+		"material" : {
+			"properties" : {
+				"id" : {
+					"type" : "long",
+					"index" : "not_analyzed"
+				},
+				"name" : {
+					"type" : "string"
+				},
+				"icon_url" : {
+					"type" : "string",
+					"index" : "not_analyzed"
+				}
+			}
+		},
+		"icon" : {
+			"properties" : {
+				"name" : {
+					"type" : "string"
+				},
+				"type" : {
+					"type" : "string"
+				},
+				"icon_url" : {
+					"type" : "string",
+					"index" : "not_analyzed"
+				}
+			}
+		}
+	}
+}

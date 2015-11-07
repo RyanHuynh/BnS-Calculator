@@ -1,0 +1,910 @@
+.switch-enter,
+.switch-leave {
+  -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+  transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
+}
+
+.switch-enter {
+  left: 100%;
+}
+
+.switch-enter.switch-enter-active {
+  left: 0;
+}
+
+.switch-leave {
+  left: 0;
+}
+
+.switch-leave.switch-leave-active {
+  left: -100%;
+}
+
+.switch-appear {
+  opacity: 0.01;
+  transition: opacity .5s ease-in;
+}
+
+.switch-appear.switch-appear-active {
+  opacity: 1;
+}
+/**
+ * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
+ * Richard Clark (http://richclarkdesign.com)
+ * http://cssreset.com
+ */
+
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  list-style: none;
+  color: white;
+  text-decoration: none;
+  -webkit-appearance: none;
+}
+
+* {
+  outline: none;
+}
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+nav ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+
+/* change colours to suit your needs */
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none;
+}
+
+/* change colours to suit your needs */
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* change border colour to suit your needs */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+input,
+select {
+  vertical-align: middle;
+}
+
+*:focus {
+  outline: 0;
+}
+
+body,
+html {
+  background: #262626;
+  height: 100%;
+}
+
+body {
+  background: #262626;
+  padding: 1%;
+}
+
+header {
+  background: url("../../../../Calculator/img/misc/header.png") no-repeat center top;
+  margin-top: 0.5%;
+  height: 17%;
+  background-size: auto 100%;
+}
+
+footer {
+  background: black;
+  text-align: center;
+  color: white;
+  padding: 8px 0;
+  bottom: 0;
+  width: 100%;
+  position: fixed;
+}
+
+small {
+  font-size: 0.8em;
+  line-height: 0.8em;
+}
+
+select,
+option {
+  border: 0 !important;
+  outline: 0px !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#content {
+  margin: 0 auto;
+  width: 78%;
+  height: 100%;
+}
+
+.icon {
+  border: 2px solid #D76100;
+  opacity: 0.3;
+  cursor: pointer;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+
+.m2p {
+  margin: 1.9%;
+}
+
+.sectionTxt {
+  height: 40px;
+  margin-bottom: 15px;
+}
+
+.entry {
+  margin: 5px 0;
+}
+
+.entry > * {
+  display: inline-block;
+  margin: 0;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.infoText {
+  color: #D76100;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.feeEntry img {
+  width: 25px;
+  height: 25px;
+}
+
+.feeEntry * {
+  vertical-align: middle;
+  display: inline-block;
+  color: white;
+}
+
+.feeEntry input {
+  color: black;
+  width: 20px;
+  text-align: right;
+}
+
+.feeEntry input.goldInput {
+  width: 30px;
+}
+
+.feeEntry input[type="number"]:disabled {
+  background: none;
+  color: white;
+  border: 2px solid #1A1A1A;
+}
+
+.feeEntry input[type="image"] {
+  border: none;
+}
+
+.frameBorder {
+  border: 3px solid #D76100;
+  background: #1A1A1A;
+  padding: 1%;
+}
+#submitForm {
+  margin: 0 auto;
+}
+
+.formEntry {
+  width: 100%;
+  margin-bottom: 3%;
+}
+
+.formEntry label {
+  color: #D76100;
+}
+
+.formEntry select,
+input,
+textarea {
+  height: 31px;
+  color: black;
+  padding: 1px 3px;
+}
+
+.formEntry select {
+  background: #D76100;
+  color: white;
+}
+
+.formEntry .formBtn {
+  border: 2px solid #D76100;
+  text-align: center;
+  height: 31px;
+  line-height: 28px;
+  cursor: pointer;
+  color: #D76100;
+  text-decoration: none;
+}
+
+.formEntry .formBtn:hover {
+  background: #F89406;
+  color: white;
+}
+
+.formEntry .deleteBtn {
+  width: 27px;
+  height: 27px;
+  cursor: pointer;
+}
+
+.formEntry input:disabled {
+  background: none;
+  color: white;
+  border: 2px solid #1A1A1A;
+}
+
+.drop-zone-style {
+  width: 320px;
+  height: 320px;
+  border: 1px dashed gray;
+  float: right;
+  text-align: center;
+  padding: 35% 25%;
+  opacity: 0.7;
+}
+#icon-gallery {
+  height: 100%;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.drop-zone-style {
+  padding: 32% 20%;
+  width: 250px;
+  height: 250px;
+}
+
+.list-wrapper {
+  overflow: hidden;
+}
+
+.list-wrapper > label > input {
+  display: none;
+}
+
+.list-wrapper > label > input:checked + img.icon {
+  border: 2px solid #D76100;
+  opacity: 1;
+}
+
+.icon {
+  border: 2px solid #D76100;
+  opacity: 0.3;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  margin: 10px;
+}
+
+.icon:hover {
+  opacity: 1;
+}
+.gridView .table-hover>tbody>tr:hover {
+  background: #613DCC;
+}
+
+.gridView .react-bs-table .table-header>table>thead>tr>th div {
+  text-align: center;
+  color: #D76100;
+}
+
+.gridView .pagination>li>a,
+.pagination>li>span {
+  color: #D76100;
+}
+
+.gridView .react-bs-container .dropdown button.dropdown-toggle span {
+  color: #D76100;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.info-wrapper {
+  display: inline-flex;
+}
+
+.navigator {
+  margin: 10px 0;
+}
+
+.navigator * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.navigator select {
+  background: #D76100;
+  height: 31px;
+  width: 20%;
+  margin-right: 2%;
+  color: white;
+}
+
+.searchBar input[type="text"] {
+  width: 250px;
+  height: 31px;
+  padding: 1px 3px;
+  color: black;
+}
+
+#searchIcon {
+  background: #D76100 url("../../../../Calculator/img/misc/searchIcon.png") no-repeat center center;
+  background-size: auto 100%;
+  width: 50px;
+  height: 31px;
+}
+
+.navigator-btn {
+  text-align: center;
+  width: 100px;
+  margin-right: 25px;
+  height: 31px;
+  line-height: 28px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.navigator-btn.yellow {
+  border: 2px solid #D76100;
+  color: #F89406;
+}
+
+.navigator-btn.yellow:hover {
+  background: #F89406;
+  color: white;
+  text-decoration: none;
+}
+
+.navigator-btn.red {
+  border: 2px solid #F22613;
+  color: #F22613;
+}
+
+.navigator-btn.red:hover {
+  background: #F22613;
+  color: white;
+  text-decoration: none;
+}
+
+.gridIcon {
+  padding: 2px !important;
+}
+
+.gridIcon img {
+  width: 30px;
+  height: 30px;
+}
+.pagination {
+  margin: 0;
+}
+.react-bs-table {
+  margin-bottom: 37px;
+}
+
+.react-bs-table .table-header {
+  height: 37px;
+  border-right-width: 1px;
+  border-right-style: solid;
+  border-right-color: #ddd;
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-top-color: #ddd;
+}
+
+.react-bs-table .table-header>table {
+  table-layout: fixed;
+  border-right-style: hidden;
+  border-top-style: hidden;
+}
+
+.react-bs-table .table-header>table>thead>tr {
+  border-bottom-style: hidden;
+}
+
+.react-bs-table .table-header>table>thead>tr>th .table-header-column {
+  line-height: 25px;
+}
+
+.react-bs-table .table-header>table>thead>tr>.sort-column {
+  cursor: pointer;
+}
+
+.react-bs-table .table-container {
+  overflow-x: auto;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.react-bs-table .table-container>table {
+  margin-top: -18px;
+  table-layout: fixed;
+  margin-bottom: 0;
+}
+
+.react-bs-container .tool-bar {
+  margin-bottom: 5px;
+}
+/**
+ * React Select
+ * ============
+ * Created by Jed Watson and Joss Mackison for KeystoneJS, http://www.keystonejs.com/
+ * https://twitter.com/jedwatson https://twitter.com/jossmackison https://twitter.com/keystonejs
+ * MIT License: https://github.com/keystonejs/react-select
+*/
+
+.Select {
+  position: relative;
+}
+
+.Select-control {
+  position: relative;
+  overflow: hidden;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-color: #d9d9d9 #cccccc #b3b3b3;
+  box-sizing: border-box;
+  color: #333333;
+  cursor: default;
+  outline: none;
+  padding: 1px 52px 1px 10px;
+  line-height: 31px;
+  height: 31px;
+}
+
+.Select-control:hover {
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+}
+
+.is-searchable.is-open > .Select-control {
+  cursor: text;
+}
+
+.is-open > .Select-control {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  background: #ffffff;
+  border-color: #b3b3b3 #cccccc #d9d9d9;
+}
+
+.is-open > .Select-control > .Select-arrow {
+  border-color: transparent transparent #999999;
+  border-width: 0 5px 5px;
+}
+
+.is-searchable.is-focused:not(.is-open) > .Select-control {
+  cursor: text;
+}
+
+.is-focused:not(.is-open) > .Select-control {
+  border-color: #0088cc #0099e6 #0099e6;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 5px -1px rgba(0, 136, 204, 0.5);
+}
+
+.Select-placeholder {
+  color: #aaaaaa;
+  padding: 1px 52px 1px 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -15px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.has-value > .Select-control > .Select-placeholder {
+  color: #333333;
+}
+
+.Select-value {
+  color: #aaaaaa;
+  padding: 8px 52px 8px 10px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: -15px;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.has-value > .Select-control > .Select-value {
+  color: #333333;
+}
+
+.Select-input > input {
+  cursor: default;
+  background: none transparent;
+  box-shadow: none;
+  height: auto;
+  border: 0 none;
+  font-family: inherit;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  display: inline-block;
+  -webkit-appearance: none;
+}
+
+.is-focused .Select-input > input {
+  cursor: text;
+}
+
+.Select-control:not(.is-searchable) > .Select-input {
+  outline: none;
+}
+
+.Select-loading {
+  -webkit-animation: Select-animation-spin 400ms infinite linear;
+  -o-animation: Select-animation-spin 400ms infinite linear;
+  animation: Select-animation-spin 400ms infinite linear;
+  width: 16px;
+  height: 16px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  border: 2px solid #cccccc;
+  border-right-color: #333333;
+  display: inline-block;
+  position: relative;
+  margin-top: -8px;
+  position: absolute;
+  right: 30px;
+  top: 50%;
+}
+
+.has-value > .Select-control > .Select-loading {
+  right: 46px;
+}
+
+.Select-clear {
+  color: #999999;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  padding: 1px 10px;
+  position: absolute;
+  right: 17px;
+  top: 0;
+}
+
+.Select-clear:hover {
+  color: #c0392b;
+}
+
+.Select-clear > span {
+  font-size: 1.1em;
+}
+
+.Select-arrow-zone {
+  content: " ";
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 30px;
+  cursor: pointer;
+}
+
+.Select-arrow {
+  border-color: #999999 transparent transparent;
+  border-style: solid;
+  border-width: 5px 5px 0;
+  content: " ";
+  display: block;
+  height: 0;
+  margin-top: -ceil(2.5px);
+  position: absolute;
+  right: 10px;
+  top: 14px;
+  width: 0;
+  cursor: pointer;
+}
+
+.Select-menu-outer {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+  background-color: #ffffff;
+  border: 1px solid #cccccc;
+  border-top-color: #e6e6e6;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  margin-top: -1px;
+  max-height: 200px;
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  z-index: 1000;
+  -webkit-overflow-scrolling: touch;
+}
+
+.Select-menu {
+  max-height: 198px;
+  overflow-y: auto;
+}
+
+.Select-option {
+  box-sizing: border-box;
+  color: #666666;
+  cursor: pointer;
+  display: block;
+  padding: 8px 10px;
+}
+
+.Select-option:last-child {
+  border-bottom-right-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.Select-option.is-focused {
+  background-color: #f2f9fc;
+  color: #333333;
+}
+
+.Select-option.is-disabled {
+  color: #cccccc;
+  cursor: not-allowed;
+}
+
+.Select-noresults,
+.Select-search-prompt,
+.Select-searching {
+  box-sizing: border-box;
+  color: #999999;
+  cursor: default;
+  display: block;
+  padding: 8px 10px;
+}
+
+.Select.is-multi .Select-control {
+  padding: 2px 52px 2px 3px;
+}
+
+.Select.is-multi .Select-input {
+  vertical-align: middle;
+  border: 1px solid transparent;
+  margin: 2px;
+  padding: 3px 0;
+}
+
+.Select-item {
+  background-color: #f2f9fc;
+  border-radius: 2px;
+  border: 1px solid #c9e6f2;
+  color: #0088cc;
+  display: inline-block;
+  font-size: 1em;
+  margin: 2px;
+}
+
+.Select-item-icon,
+.Select-item-label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.Select-item-label {
+  cursor: default;
+  border-bottom-right-radius: 2px;
+  border-top-right-radius: 2px;
+  padding: 3px 5px;
+}
+
+.Select-item-label .Select-item-label__a {
+  color: #0088cc;
+  cursor: pointer;
+}
+
+.Select-item-icon {
+  cursor: pointer;
+  border-bottom-left-radius: 2px;
+  border-top-left-radius: 2px;
+  border-right: 1px solid #c9e6f2;
+  padding: 2px 5px 4px;
+}
+
+.Select-item-icon:hover,
+.Select-item-icon:focus {
+  background-color: #ddeff7;
+  color: #0077b3;
+}
+
+.Select-item-icon:active {
+  background-color: #c9e6f2;
+}
+
+.Select.is-multi.is-disabled .Select-item {
+  background-color: #f2f2f2;
+  border: 1px solid #d9d9d9;
+  color: #888888;
+}
+
+.Select.is-multi.is-disabled .Select-item-icon {
+  cursor: not-allowed;
+  border-right: 1px solid #d9d9d9;
+}
+
+.Select.is-multi.is-disabled .Select-item-icon:hover,
+.Select.is-multi.is-disabled .Select-item-icon:focus,
+.Select.is-multi.is-disabled .Select-item-icon:active {
+  background-color: #f2f2f2;
+}
+
+@keyframes Select-animation-spin {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@-webkit-keyframes Select-animation-spin {
+  to {
+    -webkit-transform: rotate(1turn);
+  }
+}

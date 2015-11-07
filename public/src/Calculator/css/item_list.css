@@ -1,0 +1,51 @@
+#navigator{
+	margin-bottom :3%;
+}
+#navigator > *{
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 0.9em;
+}
+#navigator select{
+	background: #D76100;
+	height:27px;
+	color: white;
+	width: 45%;
+}
+.searchBar {
+	float: right;
+	text-align: right;
+	width: 45%
+}
+.searchBar > *{
+	display: inline-block;
+}
+.searchBar input[type="text"]{
+	height:27px;
+	box-sizing : border-box;
+	padding :0;
+}
+#searchIcon{
+	background: #D76100 url('../img/misc/searchIcon.png') no-repeat center center;
+	background-size: auto 100%;
+	height:27px;
+}
+	
+#list-wrapper{
+    padding: 2%;
+    border: 4px solid #D76100;
+    box-shadow: none;
+    background:#3c3c3c;
+    overflow: hidden;
+}
+#list-wrapper > label > input{
+	display: none;
+}
+
+#list-wrapper > label > input:checked + img.icon{
+	border: 2px solid #D76100;
+	opacity: 1;
+}
+.icon_list {
+	width: 7.2%;
+}

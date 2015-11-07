@@ -1,0 +1,87 @@
+.gridView .table-hover>tbody>tr:hover{
+	background: #613DCC;
+}
+.gridView .react-bs-table .table-header>table>thead>tr>th div{
+	text-align: center;
+	color: #D76100;
+}
+.gridView .pagination>li>a, .pagination>li>span {
+	color : #D76100;
+}
+.gridView .react-bs-container .dropdown button.dropdown-toggle span{
+	color : #D76100;
+}
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.info-wrapper{
+	display: inline-flex;
+}
+
+.navigator{
+	margin:10px 0;
+}
+.navigator *{
+	display: inline-block;
+	vertical-align: middle;
+}
+.navigator select{
+	background: #D76100;
+	height: 31px;
+	width: 20%;
+	margin-right: 2%;
+	color: white;
+}
+.searchBar input[type="text"]{
+	width: 250px;
+	height: 31px;
+	padding: 1px 3px;
+	color: black;
+}
+#searchIcon{
+	background: #D76100 url('/Calculator/img/misc/searchIcon.png') no-repeat center center;
+	background-size: auto 100%;
+	width: 50px;
+	height: 31px;
+}
+
+.navigator-btn{
+	text-align: center;
+	width: 100px;
+	margin-right: 25px;
+	height: 31px;
+	line-height: 28px;
+	cursor: pointer;
+	text-decoration: none;
+}
+.navigator-btn.yellow{
+	border : 2px solid #D76100;
+	color : #F89406;
+}
+.navigator-btn.yellow:hover{
+	background: #F89406;
+	color : white;
+	text-decoration: none;
+}
+.navigator-btn.red{
+	border : 2px solid #F22613;
+	color : #F22613;
+}
+.navigator-btn.red:hover{
+	background: #F22613;
+	color: white;
+	text-decoration: none;
+}
+.gridIcon {
+	padding : 2px !important;
+}
+.gridIcon img{
+	width: 30px;
+	height: 30px;
+}

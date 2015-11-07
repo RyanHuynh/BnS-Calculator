@@ -1,0 +1,59 @@
+@media only screen  and (min-width : 1300px) {
+	#content{
+	    margin: 0 auto;
+	    width: 85%;
+	}
+	#calculator-wrapper {
+		width: 35%;
+	}
+	#content .pure-u-1-30 {
+		width: 8%;
+	}
+}
+
+@media only screen  and (min-width : 1824px) {
+	header {
+		height: 15%;
+		margin-bottom: 1%;
+	}
+	#content{
+	    margin: 0 auto;
+	    width: 75%;
+	}
+	#calculator-wrapper {
+		width: 35%;
+	}
+	#content .pure-u-1-30 {
+		width: 8%;
+	}
+	#materialSection, #resultSection {
+		margin-top: 4%;
+	}
+	#calculator-wrapper .pure-u-9-24 {
+		width: 29.5%;
+	}
+	b, p {
+	    font-size: 1em;
+	    line-height: 1.4em;
+	    color: white;
+	}
+	.feeEntry *{
+		font-size: 1em;
+	}
+	#navigator select{
+		height:31px;
+	}
+	#navigator > *{
+		font-size: 1em;
+	}
+	.searchBar > *{
+		display: inline-block;
+	}
+	.searchBar input[type="text"]{
+		height:31px;
+	}
+	#searchIcon{
+		height:31px;
+	}
+	
+}
