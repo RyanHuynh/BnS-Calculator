@@ -10,6 +10,7 @@
   "license": "ISC",
   "devDependencies": {
     "body-parser": "^1.13.3",
+    "boron": "^0.1.2",
     "elasticsearch": "^8.0.1",
     "events": "^1.0.2",
     "express": "^4.13.3",
@@ -27,6 +28,7 @@
     "react-addons": "^0.9.1-deprecated",
     "react-bootstrap-table": "^0.9.15",
     "react-dropzone": "^2.1.0",
+    "react-menu": "0.0.7",
     "react-router": "^1.0.0-rc1",
     "react-select": "^0.6.9",
     "react-skylight": "^0.2.0",

@@ -1,5 +1,5 @@
 var React = require('react');
-var FeeEntry = require('../Ultil/FeeEntry.react');
+var FeeEntry = require('../Util/FeeEntry.react');
 var ReactPropTypes = React.PropTypes;
 
 var ResultInfo = React.createClass({

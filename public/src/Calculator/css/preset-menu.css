@@ -1,0 +1,39 @@
+.presetMenu {
+	position : absolute;
+	top :10px;
+	right :3%;
+	-webkit-appearance: none; 
+}
+.presetMenu > *{
+	display: inline-block;
+	vertical-align: middle;
+}
+.presetMenu b{
+	color:#D76100;
+}
+.pure-g .presetMenu {
+	letter-spacing: 0;
+}
+.presetMenu .Menu__MenuOption{
+	width: 200px;
+	color: white;
+	text-align: right;
+}
+.presetMenu .Menu__MenuOptions{
+    background: #D76100;
+    border: none;
+}
+.presetMenu .Menu__MenuTrigger{
+	border: none;
+	background: url("../img/misc/setting.png") no-repeat;
+	background-size: 100% 100%;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	padding: 0;
+}
+
+.presetMenu .Menu__MenuTrigger__inactive{
+	background: url("../img/misc/setting2.png") no-repeat;
+	background-size: 100% 100%;
+}

@@ -25,7 +25,11 @@ time, mark, audio, video {
     list-style: none;
 }
 * {
-	outline: none;
+	outline: none; 
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 article,aside,details,figcaption,figure,

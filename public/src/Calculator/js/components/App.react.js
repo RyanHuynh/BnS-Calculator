@@ -1,7 +1,8 @@
 var React = require('react');
 var Calculator = require('./Calculator/Calculator.react');
 var ItemList = require('./ItemList/ItemList.react');
-var Navigator = require('./Navigator.react');
+var Navigator = require('./Util/Navigator.react');
+var PresetMenu = require('./Util/PresetMenu.react');
 var ReactTooltip = require('react-tooltip');
 var ReactPropTypes = React.PropTypes;
 var Actions = require('../actions/Actions');
@@ -13,6 +14,7 @@ var App = React.createClass({
 	render : function(){
 		return (
 			<div className="pure-g">
+				<PresetMenu />
 				<div className="pure-u-15-30" >
 					<Navigator />
 					<ItemList />

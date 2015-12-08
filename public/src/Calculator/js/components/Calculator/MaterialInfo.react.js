@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactPropTypes = React.PropTypes;
-var FeeEntry = require('../Ultil/FeeEntry.react');
+var FeeEntry = require('../Util/FeeEntry.react');
 var Constants = require('../../constants/Constants');
 var Store = require('../../stores/Store');
 var MaterialInfo = React.createClass({

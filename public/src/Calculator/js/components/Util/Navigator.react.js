@@ -1,10 +1,10 @@
 var React = require('react');
-var Actions = require('../actions/Actions');
-var Store = require('../stores/Store');
+var Actions = require('../../actions/Actions');
+var Store = require('../../stores/Store');
 
 var craftCategories = [
 	{ label : "All", value : "all" },
-	{ label : "Accquired Taste", value : "cooker" },
+	{ label : "Acquired Taste", value : "cooker" },
 	{ label : "Green Thumbs", value : "havester" },
 	{ label : "Herbside Service", value : "herbalist" },
 	{ label : "The Earthseers", value : "charm" },
@@ -18,7 +18,7 @@ var craftCategories = [
 	{ label : "The Trappers Alliance", value : "hunter" },
 	{ label : "The Tree Fellers", value : "woodcutter" },
 	{ label : "Soul Wardens", value : "bopae" },
-	{ label : "My Favourites", value : "favourite" }
+	{ label : "My Crafts", value : "favourite" }
 ];
 
 var Navigator = React.createClass({

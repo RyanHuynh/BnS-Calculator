@@ -1,6 +1,6 @@
 var React = require('react');
 var Actions = require('../../actions/Actions');
-var FeeEntry =require('../Ultil/FeeEntry.react');
+var FeeEntry =require('../Util/FeeEntry.react');
 var Constants = require('../../constants/Constants');
 var ReactTooltip = require('react-tooltip');
 var ReactPropTypes = React.PropTypes;
@@ -19,7 +19,7 @@ var RecipeInfo = React.createClass({
 		var s = parseInt(duration%60);
 
 		var imgsrc = "img/misc/" + ( favourite ? "" : "un" ) + "favourite.png";
-		var dataTip= !favourite ? "Add to favourite." : "Remove from favourite."
+		var dataTip= !favourite ? "Add to custom filter." : "Remove from custom filter."
 		var dataType = !favourite ? "light" : "warning"
 
 		var durationStr = (h > 0 ? h + " hr" : "") + (m > 0 ? m + " min" : "") + (s > 0 ? s + " sec" : "");
