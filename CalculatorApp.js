@@ -80,6 +80,58 @@ router.route('/getFavouriteItemList')
 			}
 		});
 	});
+
+router.route('/submitPreset')
+	.post(function(req,resp){
+		var data = req.body;
+		var name = data.name;
+		var passphrase = data.passphrase;
+		client.search({
+			index : 'record',
+			type : 'preset',
+			body : {
+				"query": {
+			        "term": {
+			           "name": {
+			              "value": name
+			           }
+			        }
+			    }
+			}
+		}, function(err, result){
+			if(err){
+				resp.json({
+					message : "There is something goes wrong",
+					success : false
+				})
+			}else{
+				if(result.hits.total > 0){
+					resp.json({
+						message : "The preset '" + name + "' is already existed. Please try to use a different name.",
+						success : false
+					})
+				}
+				else{
+					client.index({
+						index : 'record',
+						type: 'preset',
+						body : {
+							name : data.name,
+							passphrase : data.passphrase,
+							updateOn : (new Date()).getTime(),
+							item : "",
+							material : ""
+						}
+					},function(err, result){
+						resp.json({
+							message : "The preset '" + name + "' is created successfully.",
+							success : true
+						})
+					});
+				}
+			}
+		})
+	});
 app.use(express.static(__dirname + '/public/build/Calculator', {maxAge : 31556926000} ));
 app.listen(3000);
 console.log("BnS Calculator is running on port 3000");

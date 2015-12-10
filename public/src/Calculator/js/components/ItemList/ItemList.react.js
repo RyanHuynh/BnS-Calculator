@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var ItemIcon = require('./ItemIcon.react');
 var Store = require('../../stores/Store');
 var Actions = require('../../actions/Actions');
@@ -22,7 +23,7 @@ var ItemList = React.createClass({
 		Store.addListChangedListener(this._onListChanged);
 		Store.addInfoChangedListener(this._onItemSelected);
 
-		var width = this.getDOMNode(this).offsetWidth;
+		var width = ReactDOM.findDOMNode(this).offsetWidth;
 		this.setState({ domHeight : width - 30 + "px" }); //This is the border size and padding of the component
 	},
 

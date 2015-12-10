@@ -7,5 +7,6 @@ module.exports = keyMirror({
 	UPDATE_FEE : null,
 	MATERIAL_FEE : null,
 	ITEM_FEE : null,
-	EDIT_FAVOURITE : null
+	EDIT_FAVOURITE : null,
+	SUBMIT_PRESET : null
 })

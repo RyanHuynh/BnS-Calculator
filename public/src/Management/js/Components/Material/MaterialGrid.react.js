@@ -41,8 +41,10 @@ var MaterialGrid = React.createClass({
 			return (h > 0 ? h + "h" : "") + (m > 0 ? m + "m" : "") + (s > 0 ? s + "s" : "");
 		}
 		function iconFormat(cell,row){
+			if(!cell)
+				return;
 			var iconURL = '../Calculator/img/items/' + cell;
-			return <img src={iconURL} />
+			return <img src={iconURL} className='gridIcon'/>
 		}
 		
 		function onRowSelect(cellData){
@@ -52,10 +54,13 @@ var MaterialGrid = React.createClass({
 			mode: "radio",
 			clickToSelect: true,
 			bgColor: "#613DCC",
-			checkboxHidden : true,
-			onSelect : onRowSelect
+			onSelect : onRowSelect,
+			hideSelectColumn: true
 		};
 
+		var options = {
+			sizePerPage : 5
+		};
 		return (
 			<div>
 				<div className="frameBorder noselect pure-u-20-30 gridView" >
@@ -69,7 +74,7 @@ var MaterialGrid = React.createClass({
 							<div id="searchIcon"></div>
 						</form>
 					</div>
-					<Table data={this.state.data} hover={true} pagination={true} height="250" selectRow={selectRowProp} >
+					<Table data={this.state.data} hover={true} pagination={true} height="280" selectRow={selectRowProp} options={options}>
 						<Header dataField="id" dataAlign="center" isKey={true} width="50px">ID</Header>
 						<Header className="gridIcon" dataField="icon_url" width="50px" dataAlign="center" dataFormat={iconFormat} >Icon</Header>
 						<Header dataField="name" dataSort={true}>Name</Header>						

@@ -1,3 +1,4 @@
+"item"
 {
 	"mappings" : {
 		"recipe" : {
@@ -76,6 +77,32 @@
 				"icon_url" : {
 					"type" : "string",
 					"index" : "not_analyzed"
+				}
+			}
+		}
+	}
+}
+
+"record"
+{
+	"mappings" :{
+		"preset" : {
+			"properties" : {
+				"name" : {
+					"type" : "string",
+					"index" : "not_analyzed"
+				},
+				"passphrase" : {
+					"type" : "string"
+				},
+				"item" : {
+					"type" : "string"
+				},
+				"material" : {
+					"type" : "string"
+				},
+				"updateOn" : {
+					"type" : "long"
 				}
 			}
 		}

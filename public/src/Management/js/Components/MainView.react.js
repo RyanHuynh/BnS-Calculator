@@ -1,5 +1,4 @@
-var React = require('react/addons');
-var ReactCSSTransitionGroup = React.addons.CSSTransitionGroup;
+var React = require('react');
 var RecipeGrid = require('./Recipe/RecipeGrid.react');
 var MaterialGrid = require("./Material/MaterialGrid.react");
 

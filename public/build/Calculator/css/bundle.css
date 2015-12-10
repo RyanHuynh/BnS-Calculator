@@ -290,7 +290,7 @@ body {
 
 header {
   background: url("../img/misc/header.png") no-repeat center top;
-  margin: 0.5% 0 1.5%;
+  margin-bottom: 1.5%;
   height: 15%;
   background-size: auto 100%;
 }
@@ -734,7 +734,6 @@ p {
 
 @media only screen  and (min-width : 1824px) {
   header {
-    height: 15%;
     margin-bottom: 1%;
   }
 
@@ -835,4 +834,8 @@ p {
 .presetMenu .Menu__MenuTrigger__inactive {
   background: url("../img/misc/setting2.png") no-repeat;
   background-size: 100% 100%;
+}
+
+.presetModal > div {
+  padding: 20px;
 }

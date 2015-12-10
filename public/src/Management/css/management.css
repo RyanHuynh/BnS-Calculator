@@ -78,10 +78,7 @@
 	color: white;
 	text-decoration: none;
 }
-.gridIcon {
-	padding : 2px !important;
-}
-.gridIcon img{
+img.gridIcon{
 	width: 30px;
 	height: 30px;
 }

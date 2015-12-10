@@ -1,4 +1,5 @@
 var React = require('react');
+var ReactDOM = require('react-dom');
 var Action = require('../../actions/Actions');
 var ReactTooltip = require('react-tooltip');
 var ReactPropTypes = React.PropTypes;
@@ -70,7 +71,7 @@ var FeeEntry = React.createClass({
 
 		//On editMode = false, trigger save 
 		if(this.state.editMode){
-			var totalFee = React.findDOMNode(this.refs.gold).value * 10000 + React.findDOMNode(this.refs.silver).value * 100 + React.findDOMNode(this.refs.copper).value * 1;
+			var totalFee = ReactDOM.findDOMNode(this.refs.gold).value * 10000 + ReactDOM.findDOMNode(this.refs.silver).value * 100 + ReactDOM.findDOMNode(this.refs.copper).value * 1;
 			Action.updateFee({
 				feeType : this.props.feeType,
 				id : this.props.id,

@@ -74,7 +74,7 @@ var MaterialInfo = React.createClass({
 						</div>
 						<div className="entry">
 							<b className="infoText" >Market price ( .ea ):</b>
-							<p><FeeEntry editable={true} feeType={Constants.MATERIAL_FEE} id={this.state.currentMaterialId} fee={this.state.currentMaterialFee}/></p>
+							<FeeEntry editable={true} feeType={Constants.MATERIAL_FEE} id={this.state.currentMaterialId} fee={this.state.currentMaterialFee}/>
 						</div>
 					</div>
 				</div>

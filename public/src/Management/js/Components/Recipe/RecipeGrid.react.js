@@ -48,7 +48,7 @@ var RecipeGrid = React.createClass({
 			if(!cell)
 				return;
 			var iconURL = '../Calculator/img/items/' + cell;
-			return <img src={iconURL} />
+			return <img src={iconURL} className='gridIcon'/>
 		}
 		function descriptionFormat(cell, row){
 			if(!cell)
@@ -75,14 +75,18 @@ var RecipeGrid = React.createClass({
 			clickToSelect: true,
 			bgColor: "#613DCC",
 			onSelect: onRowSelect,
-			checkboxHidden : true
+			hideSelectColumn: true
+		};
+
+		var options = {
+			sizePerPage : 5
 		};
 
 		return (
 			<div className="frameBorder noselect gridView" style={{marginBottom : "1%"}}>
 				<img src="/Calculator/img/misc/recipeTxt.png" />
 				<Navigator />
-				<Table data={this.state.data} hover={true} pagination={true} height="250" selectRow={selectRowProp}>
+				<Table data={this.state.data} hover={true} pagination={true} height="280" selectRow={selectRowProp} options={options}>
 					<Header dataField="id" dataAlign="center" isKey={true} width="50px">ID</Header>
 					<Header className="gridIcon" dataField="icon_url" width="50px" dataAlign="center" dataFormat={iconFormat} >Icon</Header>
 					<Header dataField="name" dataFormat={nameFormat} width="250px" dataSort={true}>Name</Header>

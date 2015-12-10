@@ -39,6 +39,14 @@ var Actions = {
 			id : id,
 			state : state
 		})
+	},
+
+	submitPreset: function(name, passphrase){
+		AppDispatcher.dispatch({
+			actionType : Constants.SUBMIT_PRESET,
+			name : name,
+			passphrase : passphrase
+		})
 	}
 }
 

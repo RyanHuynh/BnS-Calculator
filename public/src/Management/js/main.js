@@ -1,5 +1,5 @@
-var React = require('react/addons');
-var Animation =  React.addons.CSSTransitionGroup;
+var React = require('react');
+var ReactDOM = require('react-dom');
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
@@ -18,7 +18,7 @@ var App = React.createClass({
 		)
 	}
 })
-React.render((
+ReactDOM.render((
 	<Router>
 		<Route path="/" component={App}>
 			<Route path="" component={MainView} />

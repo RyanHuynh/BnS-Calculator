@@ -124,6 +124,27 @@ function updateFavourite(id, state){
 	_itemInfo.favourite = state;
 	Store.emitInfoChanged();
 }
+
+//Submit preset
+function submitPreset(name, passphrase){
+	$.ajax({
+		url: 'api/submitPreset',
+		dataType: 'json',
+		type : 'POST',
+		cache : false,
+		data : {
+			name : name,
+			passphrase : passphrase
+		},
+		success : function(data){
+			
+		},
+		error : function(){
+
+		}
+	})
+}
+
 var Store = assign({}, EventEmitter.prototype, {
 
 	getItemInfo : function(){
@@ -196,39 +217,44 @@ var Store = assign({}, EventEmitter.prototype, {
 AppDispatcher.register(function(action){
 	var category,searchStr,data;
 	switch(action.actionType){
-	case Constants.UPDATE_CATEGORY:
-		category = action.category;
-		searchStr = action.searchString;
-		if(category && (searchStr || searchStr == "") )
-			updateCategory(category, searchStr);
-		break;
-
-	case Constants.SEARCH_CHANGE:
-		searchStr = action.searchString;
-		if(searchStr || searchStr == "")
-			filterBySearch(searchStr);
-		break;
-
-	case Constants.DISPLAY_INFO:
-		data = action.data;
-		if(data)
-			infoForRecipe(data);
-		break;
-
-	case Constants.UPDATE_FEE:
-		if(action.feeType == Constants.MATERIAL_FEE){
-			updateMaterialFee(action.id, action.totalFee);
+		case Constants.UPDATE_CATEGORY:
+			category = action.category;
+			searchStr = action.searchString;
+			if(category && (searchStr || searchStr == "") )
+				updateCategory(category, searchStr);
 			break;
-		}
-		else if(action.feeType == Constants.ITEM_FEE){
-			updateItemFee(action.id, action.totalFee);
-			break;
-		}
 
-	case Constants.EDIT_FAVOURITE:
-		updateFavourite(action.id, action.state);
-		break;
+		case Constants.SEARCH_CHANGE:
+			searchStr = action.searchString;
+			if(searchStr || searchStr == "")
+				filterBySearch(searchStr);
+			break;
+
+		case Constants.DISPLAY_INFO:
+			data = action.data;
+			if(data)
+				infoForRecipe(data);
+			break;
+
+		case Constants.UPDATE_FEE:
+			if(action.feeType == Constants.MATERIAL_FEE){
+				updateMaterialFee(action.id, action.totalFee);
+				break;
+			}
+			else if(action.feeType == Constants.ITEM_FEE){
+				updateItemFee(action.id, action.totalFee);
+				break;
+			}
+
+		case Constants.EDIT_FAVOURITE:
+			updateFavourite(action.id, action.state);
+			break;
+
+		case Constants.SUBMIT_PRESET:
+			submitPreset(action.name, action.passphrase);
+			break;
 	}
+
 })
 
 module.exports = Store;

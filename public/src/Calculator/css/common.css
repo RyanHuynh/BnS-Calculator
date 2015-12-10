@@ -103,7 +103,7 @@ body{
 }
 header{
     background: url('../img/misc/header.png') no-repeat center top;
-    margin: 0.5% 0 1.5%;
+    margin-bottom: 1.5%;
     height: 15%;
     background-size: auto 100%;
 }
@@ -197,12 +197,6 @@ b, p {
     width: 20px;
     height: 23px;
 }
-
-
-
-
-
-
 
 .rc-tooltip {
   position: absolute;

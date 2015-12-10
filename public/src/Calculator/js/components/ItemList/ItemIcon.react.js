@@ -15,7 +15,7 @@ var ItemIcon = React.createClass({
 	},
 
 	componentDidMount: function(){
-		var width = this.refs.itemIcon.getDOMNode().offsetWidth;
+		var width = this.refs.itemIcon.offsetWidth;
 		this.setState({ domHeight : width - 5 + "px" }); //This is the border size and padding of the component
 	},
 
