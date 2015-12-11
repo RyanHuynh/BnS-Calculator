@@ -47,6 +47,21 @@ var Actions = {
 			name : name,
 			passphrase : passphrase
 		})
+	},
+
+	loadPreset: function(name, passphrase){
+		AppDispatcher.dispatch({
+			actionType : Constants.LOAD_PRESET,
+			name : name,
+			passphrase : passphrase
+		})
+	},
+
+	savePreset: function(presetName){
+		AppDispatcher.dispatch({
+			actionType : Constants.SAVE_PRESET,
+			preset_name : presetName
+		})
 	}
 }
 

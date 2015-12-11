@@ -181,6 +181,10 @@ video {
 
 * {
   outline: none;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 article,
@@ -286,7 +290,7 @@ body {
 
 header {
   background: url("../img/misc/header.png") no-repeat center top;
-  margin: 0.5% 0 1.5%;
+  margin-bottom: 1.5%;
   height: 15%;
   background-size: auto 100%;
 }
@@ -320,10 +324,6 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-.pure-g {
-  display: flex;
 }
 
 b,
@@ -730,7 +730,6 @@ p {
 
 @media only screen  and (min-width : 1824px) {
   header {
-    height: 15%;
     margin-bottom: 1%;
   }
 
@@ -786,4 +785,109 @@ p {
   #searchIcon {
     height: 31px;
   }
+}
+.presetMenu {
+  position: absolute;
+  top: 10px;
+  right: 3%;
+  -webkit-appearance: none;
+}
+
+.presetMenu > * {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.presetMenu b {
+  color: #D76100;
+}
+
+.pure-g .presetMenu {
+  letter-spacing: 0;
+}
+
+.presetMenu .Menu__MenuOption {
+  width: 200px;
+  color: white;
+  text-align: right;
+}
+
+.presetMenu .Menu__MenuOptions {
+  background: #D76100;
+  border: none;
+}
+
+.presetMenu .Menu__MenuTrigger {
+  border: none;
+  background: url("../img/misc/setting.png") no-repeat;
+  background-size: 100% 100%;
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  padding: 0;
+}
+
+.presetMenu .Menu__MenuTrigger__inactive {
+  background: url("../img/misc/setting2.png") no-repeat;
+  background-size: 100% 100%;
+}
+
+.presetModal {
+  padding: 30px;
+  border-radius: 10px;
+  color: white;
+  border: 2px solid #ADA8A4;
+  box-shadow: 0 0 50px #000000;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  width: 300px !important;
+  height: 400px;
+}
+
+.presetModal * {
+  display: block;
+}
+
+.presetModal h1 {
+  text-align: center;
+  margin: 10px 0 30px;
+  font-size: 1.7em;
+}
+
+.presetModal div {
+  background: none !important;
+  animation: none !important;
+}
+
+.presetModal input {
+  width: 94%;
+  margin: 25px 0;
+  border-radius: 4px;
+  color: black;
+  padding: 3%;
+  border-width: 0;
+}
+
+.presetFormBtn {
+  text-align: center;
+  color: white;
+  padding: 3%;
+  width: 80%;
+  margin: 25px auto;
+  border-radius: 4px;
+  border-width: 0;
+  cursor: pointer;
+}
+
+.submitBtn {
+  background-color: #1B9A13;
+}
+
+.cancelBtn {
+  background-color: #9A1F13;
+}
+
+.divider {
+  width: 100%;
+  margin: 40px auto;
+  border-bottom: 1px solid gray;
 }

@@ -12,51 +12,59 @@ var PresetMenu = React.createClass({
 	getInitialState : function(){
 		return {
 			name : "",
-			passphrase : ""
+			type : "new",
+			passphrase : "",
+			presetName : ""
 		}
+	},
+	componentDidMount : function(){
+		Store.addPresetChangedListener(this._updatePreset);
+	},
+	componentWillUnmount : function(){
+		Store.removePresetChangedListener(this._updatePreset);
 	},
 	render : function(){
 		return (
 		<div className="presetMenu">
 			<b >Preset: </b>&nbsp;
-			<p onClick={this.showModal}>None is selected</p>
+			<p style={{minWidth : 100}} >{this.state.presetName != "" ? this.state.presetName : "None is selected"}</p>
 			<Menu >
 				<MenuTrigger>
 				</MenuTrigger>
 				<MenuOptions >
-					<MenuOption onSelect={this._showModal}>
+					<MenuOption onSelect={this._showModal.bind(this, "new")}>
 						Create New Preset
 					</MenuOption>
 
-					<MenuOption onSelect={this._showModal}>
+					<MenuOption onSelect={this._showModal.bind(this, "load")}>
 						Load Preset
 					</MenuOption>
-
-					<MenuOption onSelect={this._showModal}>
-						Save Preset
-					</MenuOption>
+					{this.state.presetName != "" ? 
+						<MenuOption onSelect={this._savePreset}>
+							Save Preset
+						</MenuOption> : ""
+					}
 				</MenuOptions>
 			</Menu>
 			<Modal ref="modal" className="presetModal">
-            	<h1>Create new preset</h1>
-            	<div>
-					<label>Name:</label>
-					<input type="text" value={this.state.name} onChange={this._updateName}/>
-				</div>
-				<div>
-					<label>Passphrase (optional):</label>
-					<input type="text" value={this.state.passphrase} onChange={this._updatePassphrase}/>
-				</div>
-				<button onClick={this._submitPreset}>Submit</button>
-            	<button onClick={this._hideModal}>Close</button>
+            	<h1>{this.state.type == "new"? "Create New Preset" : "Load Preset"}</h1>
+				<input type="text" value={this.state.name} onChange={this._updateName} placeholder="Name"/>
+				<input type="text" value={this.state.passphrase} onChange={this._updatePassphrase} placeholder="Passphrase (optional)"/>
+				<span className="divider" />
+				{this.state.type == "new" ?
+					<span className="presetFormBtn submitBtn" onClick={this._submitPreset}>Submit</span> : 
+					<span className="presetFormBtn submitBtn" onClick={this._loadPreset}>Load</span> 
+				}
+            	<span className="presetFormBtn cancelBtn" onClick={this._hideModal}>Close</span>
        		</Modal>
 		</div>
 		);
 	},
-	_showModal: function(){
+	_showModal: function(type){
 		this.setState({
 			name : "",
-			passphrase : ""
+			passphrase : "",
+			type : type
 		});
         this.refs.modal.show();
     },
@@ -64,7 +72,19 @@ var PresetMenu = React.createClass({
         this.refs.modal.hide();
     },
     _submitPreset : function(){
-    	Actions.submitPreset(this.state.name, this.state.passphrase);
+    	if(this.state.name.trim() != ""){
+	    	Actions.submitPreset(this.state.name, this.state.passphrase);
+	    	this.refs.modal.hide();
+	    }
+    },
+    _loadPreset : function(){
+    	if(this.state.name.trim() != ""){
+	    	Actions.loadPreset(this.state.name, this.state.passphrase);
+	    	this.refs.modal.hide();
+	    }
+    },
+    _savePreset : function(){
+    	Actions.savePreset(this.state.presetName);
     	this.refs.modal.hide();
     },
     _updateName : function(event){
@@ -77,6 +97,11 @@ var PresetMenu = React.createClass({
     	var pass = event.target.value;
     	this.setState({
     		passphrase : pass
+    	})
+    },
+    _updatePreset : function(name){
+    	this.setState({
+    		presetName : name
     	})
     }
 

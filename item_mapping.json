@@ -101,7 +101,7 @@
 				"material" : {
 					"type" : "string"
 				},
-				"updateOn" : {
+				"updatedOn" : {
 					"type" : "long"
 				}
 			}

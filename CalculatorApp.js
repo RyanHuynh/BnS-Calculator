@@ -10,6 +10,8 @@ app.use(bodyParser.json());
 var router = express.Router();
 app.use('/api', router);
 
+var ERROR_MSG = "It appears that Jinsoyun has attacked the server and something went wrong !!!";
+
 router.route('/getItemList')
 	.post(function(req,resp){
 	
@@ -48,7 +50,7 @@ router.route('/getItemList')
 		});
 	});
 
-router.route('/getFavouriteItemList')
+router.route('/getCustomItemList')
 	.post(function(req,resp){
 		var idList = JSON.parse(req.body.data);
 		client.search({
@@ -101,14 +103,15 @@ router.route('/submitPreset')
 		}, function(err, result){
 			if(err){
 				resp.json({
-					message : "There is something goes wrong",
-					success : false
+					message : ERROR_MSG,
+					status : "error"
 				})
-			}else{
+			}
+			else{
 				if(result.hits.total > 0){
 					resp.json({
-						message : "The preset '" + name + "' is already existed. Please try to use a different name.",
-						success : false
+						message : "The preset '" + name + "' already exists.\n Please try to use a different name.",
+						status : "warning"
 					})
 				}
 				else{
@@ -123,15 +126,112 @@ router.route('/submitPreset')
 							material : ""
 						}
 					},function(err, result){
-						resp.json({
-							message : "The preset '" + name + "' is created successfully.",
-							success : true
-						})
+						if(err){
+							resp.json({
+								message : ERROR_MSG,
+								status : "error"
+							})
+						}
+						else {
+							resp.json({
+								sys_id : result._id,
+								message : "The preset '" + name + "' is created successfully.",
+								status : "success"
+							})
+						}
 					});
 				}
 			}
 		})
 	});
-app.use(express.static(__dirname + '/public/build/Calculator', {maxAge : 31556926000} ));
+
+router.route('/loadPreset')
+	.post(function(req, resp){
+		var data = req.body;
+		var name = data.name;
+		var passphrase = data.passphrase;
+		client.search({
+			index : 'record',
+			type : 'preset',
+			body : {
+				"_source" : ["item", "material"],
+				"query": {
+			        "bool": {
+			            "must": [
+			               {
+			                   "term": {
+			                       "name": {
+			                          "value": name
+			                       }
+			                    }
+			               },
+			               {
+			                   "term": {
+			                       "passphrase": {
+			                          "value": passphrase
+			                       }
+			                    }
+			               }
+			            ]
+			        }
+			    }
+			}
+		}, function(err, result){
+			if(err){
+				resp.json({
+					message : ERROR_MSG,
+					status : "error"
+				});
+			}
+			else {
+				if(result.hits.total == 0){
+					resp.json({
+						message : "Cannot find any preset with that combination.",
+						status : "warning"
+					});
+				}
+				else
+				{
+					resp.json({
+						sys_id : result.hits.hits[0]._id,
+						record : result.hits.hits[0]._source,
+						message : "The preset '" + name + "' is loaded successfully.",
+						status : "success"
+					});
+				}
+			}
+		})
+	});
+
+router.route('/savePreset')
+	.post(function(req,resp){
+		var data = req.body;
+		client.update({
+			index : 'record',
+			type : 'preset',
+			id : data["sys_id"],
+			body : {
+				doc : {
+					item : data["data"]["item"],
+					material : data["data"]["material"],
+					updateOn : (new Date()).getTime()
+				}
+			}
+		}, function(err, result){
+			if(err){
+				resp.json({
+					message : ERROR_MSG,
+					status : "error"
+				});
+			}
+			else{
+				resp.json({
+					message : "Preset is saved successfully.",
+					status : "success"
+				});
+			}
+		})
+	})
+app.use(express.static(__dirname + '/public/build/Calculator', {maxAge : 2678400000} ));
 app.listen(3000);
 console.log("BnS Calculator is running on port 3000");

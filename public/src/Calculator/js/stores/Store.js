@@ -8,6 +8,8 @@ var LIST_CHANGED_EVENT = 'changed';
 var INFO_CHANGED_EVENT = 'info_changed';
 var MATERIAL_FEE_CHANGED = 'material_fee_changed';
 var ITEM_FEE_CHANGED = 'item_fee_changed';
+var MSG_CHANGED = 'massage changed';
+var PRESET_CHANGED = 'preset has changed.'
 
 var LIMIT_DISPLAY = 100;
 var _itemList = [];
@@ -19,6 +21,8 @@ var _itemFeeList = JSON.parse(localStorage.getItem('item')) || {}; //keep track 
 
 var _favouriteList = JSON.parse(localStorage.getItem('favourite')) || {};
 
+var _currentPresetId = null;
+
 //Get new item list on new category, then filter result by  current search string.
 function updateCategory(category, searchStr){
 	if(category == "favourite"){
@@ -29,7 +33,7 @@ function updateCategory(category, searchStr){
 		}
 
 		$.ajax({
-			url: 'api/getFavouriteItemList',
+			url: 'api/getCustomItemList',
 			dataType: 'json',
 			type : 'POST',
 			cache : false,
@@ -125,7 +129,7 @@ function updateFavourite(id, state){
 	Store.emitInfoChanged();
 }
 
-//Submit preset
+//Preset
 function submitPreset(name, passphrase){
 	$.ajax({
 		url: 'api/submitPreset',
@@ -137,10 +141,64 @@ function submitPreset(name, passphrase){
 			passphrase : passphrase
 		},
 		success : function(data){
-			
+			if(data.status == "success"){
+				_currentPresetId = data["sys_id"];
+				Store.emitPresetChanged(name);
+			}
+			Store.emitMsg(data.status, data.message);
 		},
 		error : function(){
+			Store.emitMsg(data.status, data.message);
+		}
+	})
+}
 
+function loadPreset(name, passphrase){
+	$.ajax({
+		url: 'api/loadPreset',
+		dataType: 'json',
+		type : 'POST',
+		cache : false,
+		data : {
+			name : name,
+			passphrase : passphrase
+		},
+		success : function(data){
+			if(data.status == "success"){
+				_currentPresetId = data["sys_id"];
+				_itemFeeList = data["record"]["item"] != "" ? JSON.parse(data["record"]["item"]) : {};
+				_materialFeeList  = data["record"]["material"] != "" ? JSON.parse(data["record"]["material"]) : {};
+				localStorage.setItem('item', JSON.stringify(_itemFeeList));
+				localStorage.setItem('material', JSON.stringify(_materialFeeList));
+				Store.emitInfoChanged();
+				Store.emitPresetChanged(name);
+			}
+			Store.emitMsg(data.status, data.message);
+		},
+		error : function(){
+			Store.emitMsg(data.status, data.message);
+		}
+	})
+}
+
+function savePreset(){
+	$.ajax({
+		url: 'api/savePreset',
+		dataType: 'json',
+		type : 'POST',
+		cache : false,
+		data : {
+			sys_id : _currentPresetId,
+			data : {
+				item : JSON.stringify(_itemFeeList),
+				material : JSON.stringify(_materialFeeList)
+			}
+		},
+		success : function(data){
+			Store.emitMsg(data.status, data.message);
+		},
+		error : function(){
+			Store.emitMsg(data.status, data.message);
 		}
 	})
 }
@@ -195,6 +253,22 @@ var Store = assign({}, EventEmitter.prototype, {
 		this.removeListener(ITEM_FEE_CHANGED, callback);
 	},
 
+	addMsgChangedListener : function(callback){
+		this.on(MSG_CHANGED, callback);
+	},
+
+	removeMsgChangedListener : function(callback){
+		this.removeListener(MSG_CHANGED, callback);
+	},
+
+	addPresetChangedListener : function(callback){
+		this.on(PRESET_CHANGED, callback);
+	},
+
+	removePresetChangedListener : function(callback){
+		this.removeListener(PRESET_CHANGED, callback);
+	},
+
 	emitListChanged : function(){
 		this.emit(LIST_CHANGED_EVENT);
 	},
@@ -209,6 +283,14 @@ var Store = assign({}, EventEmitter.prototype, {
 
 	emitItemFeeChanged : function(){
 		this.emit(ITEM_FEE_CHANGED);
+	},
+
+	emitMsg : function(status, msg){
+		this.emit(MSG_CHANGED, status, msg);
+	},
+
+	emitPresetChanged : function(name){
+		this.emit(PRESET_CHANGED, name);
 	}
 
 
@@ -252,6 +334,14 @@ AppDispatcher.register(function(action){
 
 		case Constants.SUBMIT_PRESET:
 			submitPreset(action.name, action.passphrase);
+			break;
+
+		case Constants.LOAD_PRESET:
+			loadPreset(action.name, action.passphrase);
+			break;
+
+		case Constants.SAVE_PRESET: 
+			savePreset(action.preset_name);
 			break;
 	}
 

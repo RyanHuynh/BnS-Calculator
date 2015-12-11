@@ -39,7 +39,7 @@ var ItemList = React.createClass({
 		)
 	},
 
-	_onListChanged : function(){
+	_onListChanged : function(a,b,c){
 		var items = Store.getItemList();
 	  	this.setState({
 	  		items : items
