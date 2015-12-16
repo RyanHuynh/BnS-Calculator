@@ -232,6 +232,6 @@ router.route('/savePreset')
 			}
 		})
 	})
-app.use(express.static(__dirname + '/public/build/Calculator', {maxAge : 2678400000} ));
+app.use(express.static(__dirname + '/public/dist/Calculator', {maxAge : 2678400000} ));
 app.listen(3000);
 console.log("BnS Calculator is running on port 3000");

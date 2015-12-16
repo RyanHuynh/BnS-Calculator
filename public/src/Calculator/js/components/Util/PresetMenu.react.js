@@ -26,28 +26,28 @@ var PresetMenu = React.createClass({
 	render : function(){
 		return (
 		<div className="presetMenu">
-			<b >Preset: </b>&nbsp;
+			<b >Dataset: </b>&nbsp;
 			<p style={{minWidth : 100}} >{this.state.presetName != "" ? this.state.presetName : "None is selected"}</p>
 			<Menu >
 				<MenuTrigger>
 				</MenuTrigger>
 				<MenuOptions >
 					<MenuOption onSelect={this._showModal.bind(this, "new")}>
-						Create New Preset
+						Create New Dataset
 					</MenuOption>
 
 					<MenuOption onSelect={this._showModal.bind(this, "load")}>
-						Load Preset
+						Load Dataset
 					</MenuOption>
 					{this.state.presetName != "" ? 
 						<MenuOption onSelect={this._savePreset}>
-							Save Preset
+							Save Dataset
 						</MenuOption> : ""
 					}
 				</MenuOptions>
 			</Menu>
 			<Modal ref="modal" className="presetModal">
-            	<h1>{this.state.type == "new"? "Create New Preset" : "Load Preset"}</h1>
+            	<h1>{this.state.type == "new"? "Create New Dataset" : "Load Dataset"}</h1>
 				<input type="text" value={this.state.name} onChange={this._updateName} placeholder="Name"/>
 				<input type="text" value={this.state.passphrase} onChange={this._updatePassphrase} placeholder="Passphrase (optional)"/>
 				<span className="divider" />

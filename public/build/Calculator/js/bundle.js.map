@@ -1,0 +1,1 @@
+{"version":3,"names":[],"mappings":"","sources":["main.js"],"sourcesContent":["var React = require('react');\r\nvar ReactDOM = require('react-dom');\r\nvar App = require('./components/App.react');\r\n\r\nReactDOM.render( <App />, document.getElementById('content'));\r\n"],"file":"bundle.js","sourceRoot":"/source/"}

@@ -5,6 +5,11 @@ var reactify = require('reactify');
 var cssConcat = require('gulp-concat-css');
 var uglify = require('gulp-uglify');
 var gutil = require('gulp-util');
+var envify = require('envify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
+var sourcemaps = require('gulp-sourcemaps');
+
 
 var CalculatorPath = {
 	ENTRY_POINT : 'public/src/Calculator/js/main.js',
@@ -41,10 +46,14 @@ var ManagementPath = {
 //For calculator
 gulp.task('calculator-buildjs', function(){
 	return gulp.src( CalculatorPath.ENTRY_POINT)
+		.pipe(buffer())
+    	.pipe(sourcemaps.init({loadMaps: true}))
 		.pipe(browserify({
-			transform : ['reactify']
+			transform : ['reactify'],
+			debug : false
 		}))
 		.pipe(rename(CalculatorPath.JS_OUT_FILE))
+		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest(CalculatorPath.DEST_JS));
 });
 
@@ -100,25 +109,32 @@ gulp.task('management', ['management-watch']);
 //This is for production
 gulp.task('production', ['dist-js', 'dist-css', 'dist-html']);
 gulp.task('dist-js', function(){
+	process.env.NODE_ENV = 'production';
+		
+	gulp.src( CalculatorPath.ENTRY_POINT)
+		.pipe(buffer())
+    	.pipe(sourcemaps.init({loadMaps: true}))
+		.pipe(browserify({
+			transform : ['reactify', 'envify']
+		}))
+		.pipe(rename(CalculatorPath.JS_OUT_FILE))
+		.pipe(uglify().on('error', gutil.log))
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest(CalculatorPath.DEST_DIST_JS));
+
 	gulp.src( ManagementPath.ENTRY_POINT)
 		.pipe(browserify({
-			transform : ['reactify']
+			transform : ['reactify','envify']
 		}))
 		.pipe(rename(ManagementPath.JS_OUT_FILE))
 		.pipe(uglify().on('error', gutil.log))
 		.pipe(gulp.dest(ManagementPath.DEST_DIST_JS));
-	gulp.src( CalculatorPath.ENTRY_POINT)
-		.pipe(browserify({
-			transform : ['reactify']
-		}))
-		.pipe(rename(CalculatorPath.JS_OUT_FILE))
-		.pipe(uglify().on('error', gutil.log))
-		.pipe(gulp.dest(CalculatorPath.DEST_DIST_JS));
 })
 gulp.task('dist-css',function(){
 	gulp.src(ManagementPath.CSS)
 		.pipe(cssConcat(ManagementPath.CSS_OUT_FILE))
 		.pipe(gulp.dest(ManagementPath.DEST_DIST_CSS));
+
 	gulp.src(CalculatorPath.CSS)
 		.pipe(cssConcat(CalculatorPath.CSS_OUT_FILE))
 		.pipe(gulp.dest(CalculatorPath.DEST_DIST_CSS));
