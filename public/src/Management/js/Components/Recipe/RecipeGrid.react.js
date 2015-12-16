@@ -1,5 +1,8 @@
 var React = require('react');
+var Modal = require('boron/DropModal');
 var Utils = require('../../Utils/Utils');
+var SubmitForm = require('../SubmitForm/SubmitForm.react');
+
 var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
@@ -86,7 +89,7 @@ var RecipeGrid = React.createClass({
 			<div className="frameBorder noselect gridView" style={{marginBottom : "1%"}}>
 				<img src="/Calculator/img/misc/recipeTxt.png" />
 				<Navigator />
-				<Table data={this.state.data} hover={true} pagination={true} height="280" selectRow={selectRowProp} options={options}>
+				<Table data={this.state.data} hover={true} pagination={true} selectRow={selectRowProp} options={options}>
 					<Header dataField="id" dataAlign="center" isKey={true} width="50px">ID</Header>
 					<Header className="gridIcon" dataField="icon_url" width="50px" dataAlign="center" dataFormat={iconFormat} >Icon</Header>
 					<Header dataField="name" dataFormat={nameFormat} width="250px" dataSort={true}>Name</Header>
@@ -111,7 +114,8 @@ var Navigator = React.createClass({
 	getInitialState : function(){
 		return {
 			category : "all",
-			searchString : ""
+			searchString : "",
+			editMode : "new"
 		}
 	},
 
@@ -124,8 +128,8 @@ var Navigator = React.createClass({
 
 		return (
 			<div className="navigator">
-				<a className="navigator-btn yellow" href="#/form/new" >New</a>
-				<a className="navigator-btn yellow" href="#/form/edit" >Edit</a>
+				<a className="navigator-btn yellow" onClick={this._showForm.bind(this, "new")} >New</a>
+				<a className="navigator-btn yellow" onClick={this._showForm.bind(this, "edit")} >Edit</a>
 				<div className="navigator-btn red" onClick={this._deleteRecipe}>Delete</div>
 				<div className="navigator-btn yellow" onClick={this._refreshList}>Refresh</div>
 				<a className="navigator-btn yellow" href="#/gallery" >Icon Gallery</a>
@@ -135,10 +139,19 @@ var Navigator = React.createClass({
 					<input type="text" onChange={this._searchRecipe} value={this.state.searchString} placeholder="What are you looking for?"/>
 					<div id="searchIcon"></div>
 				</form>
+
+				<Modal ref="form_modal" className="modalWrapper">
+					<SubmitForm mode={this.state.editMode}/>
+				</Modal>
 			</div>
 		)
 	},
-
+	_showForm : function(mode){
+		this.setState({
+			editMode : mode
+		})
+		this.refs.form_modal.show();
+	},
 	_updateCategory : function(event){
 		var newCategory = event.target.value;
 		this.setState({ category : newCategory });

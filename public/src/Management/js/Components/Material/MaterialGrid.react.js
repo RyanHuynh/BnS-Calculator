@@ -74,7 +74,7 @@ var MaterialGrid = React.createClass({
 							<div id="searchIcon"></div>
 						</form>
 					</div>
-					<Table data={this.state.data} hover={true} pagination={true} height="280" selectRow={selectRowProp} options={options}>
+					<Table data={this.state.data} hover={true} pagination={true} selectRow={selectRowProp} options={options}>
 						<Header dataField="id" dataAlign="center" isKey={true} width="50px">ID</Header>
 						<Header className="gridIcon" dataField="icon_url" width="50px" dataAlign="center" dataFormat={iconFormat} >Icon</Header>
 						<Header dataField="name" dataSort={true}>Name</Header>						

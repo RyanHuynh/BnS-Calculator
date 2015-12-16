@@ -6,7 +6,6 @@ var Route = ReactRouter.Route;
 var Link = ReactRouter.Link;
 
 var MainView = require('./Components/MainView.react');
-var EditView = require('./Components/EditView.react');
 var Gallery = require('./Components/IconGallery/IconGallery.react');
 
 var App = React.createClass({
@@ -22,7 +21,6 @@ ReactDOM.render((
 	<Router>
 		<Route path="/" component={App}>
 			<Route path="" component={MainView} />
-			<Route path="form/:mode" component={EditView} />
 			<Route path="gallery" component={Gallery} />
 			<Route path="*" component={MainView} />
 		</Route>

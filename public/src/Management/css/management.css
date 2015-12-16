@@ -11,6 +11,19 @@
 .gridView .react-bs-container .dropdown button.dropdown-toggle span{
 	color : #D76100;
 }
+.gridView .react-bs-table-container{
+	margin-bottom: 20px;
+	min-height: 260px;
+}
+.gridView .react-bs-container .table-container>table>tbody>tr>td, .react-bs-container .table-container>table>thead>tr>th{
+	line-height : 1.2px !important;
+	padding: 7px;
+	vertical-align: middle;
+	cursor: pointer;
+}
+.gridView .pagination{
+	margin-bottom: 0;
+}
 .noselect {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -27,16 +40,20 @@
 .navigator{
 	margin:10px 0;
 }
-.navigator *{
+.navigator > *{
 	display: inline-block;
 	vertical-align: middle;
 }
-.navigator select{
+.navigator > select{
 	background: #D76100;
 	height: 31px;
 	width: 20%;
 	margin-right: 2%;
 	color: white;
+}
+.searchBar > *{
+	display: inline-block;
+	vertical-align: top;
 }
 .searchBar input[type="text"]{
 	width: 250px;

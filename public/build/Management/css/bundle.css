@@ -1,36 +1,3 @@
-.switch-enter,
-.switch-leave {
-  -webkit-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -moz-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -ms-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  -o-transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-  transition: 300ms cubic-bezier(0.250, 0.250, 0.750, 0.750) all;
-}
-
-.switch-enter {
-  left: 100%;
-}
-
-.switch-enter.switch-enter-active {
-  left: 0;
-}
-
-.switch-leave {
-  left: 0;
-}
-
-.switch-leave.switch-leave-active {
-  left: -100%;
-}
-
-.switch-appear {
-  opacity: 0.01;
-  transition: opacity .5s ease-in;
-}
-
-.switch-appear.switch-appear-active {
-  opacity: 1;
-}
 /**
  * html5doctor.com Reset Stylesheet v1.6.1 (http://html5doctor.com/html-5-reset-stylesheet/)
  * Richard Clark (http://richclarkdesign.com)
@@ -339,6 +306,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #submitForm {
   margin: 0 auto;
+  padding: 20px;
 }
 
 .formEntry {
@@ -399,6 +367,12 @@ textarea {
   padding: 35% 25%;
   opacity: 0.7;
 }
+
+/*MODAL STYLE*/
+
+.modalWrapper > div {
+  animation: none !important;
+}
 #icon-gallery {
   height: 100%;
   width: 80%;
@@ -454,6 +428,23 @@ textarea {
   color: #D76100;
 }
 
+.gridView .react-bs-table-container {
+  margin-bottom: 20px;
+  min-height: 260px;
+}
+
+.gridView .react-bs-container .table-container>table>tbody>tr>td,
+.react-bs-container .table-container>table>thead>tr>th {
+  line-height: 1.2px !important;
+  padding: 7px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.gridView .pagination {
+  margin-bottom: 0;
+}
+
 .noselect {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -471,17 +462,22 @@ textarea {
   margin: 10px 0;
 }
 
-.navigator * {
+.navigator > * {
   display: inline-block;
   vertical-align: middle;
 }
 
-.navigator select {
+.navigator > select {
   background: #D76100;
   height: 31px;
   width: 20%;
   margin-right: 2%;
   color: white;
+}
+
+.searchBar > * {
+  display: inline-block;
+  vertical-align: top;
 }
 
 .searchBar input[type="text"] {
@@ -533,11 +529,6 @@ textarea {
 img.gridIcon {
   width: 30px;
   height: 30px;
-}
-.react-bs-container .table-container>table>tbody>tr>td,
-.react-bs-container .table-container>table>thead>tr>th {
-  line-height: 1.2px !important;
-  padding: 8px;
 }
 .react-bs-container .react-bs-table-container {
   border: 1px solid #ddd;

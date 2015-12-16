@@ -74,7 +74,7 @@ var SubmitForm = React.createClass({
 
 		var info = this.state.info;
 		return (
-			<div id="submitForm" className="pure-u-9-24 frameBorder">
+			<div id="submitForm" className="frameBorder">
 				<img src="/Calculator/img/misc/recipeTxt.png" style={{marginBottom : "2%"}}/>
 
 				<div className="formEntry pure-g" >
